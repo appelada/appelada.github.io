@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appelada — Sua Pelada Organizada</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.441.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --green: #169f48;
+      --green-dark: #15803d;
+      --green-light: #f0fdf4;
+      --green-pale: #d1fae5;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #1a1a1a;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--green) !important;
+    }
+    .btn-primary-green {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+      font-weight: 600;
+    }
+    .btn-primary-green:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: #fff;
+    }
+    .btn-outline-green {
+      border-color: var(--green);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .btn-outline-green:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%);
+      padding: 100px 0 80px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+    }
+    .hero h1 span {
+      color: var(--green);
+    }
+    .hero .lead {
+      font-size: 1.2rem;
+      color: #4b5563;
+      max-width: 520px;
+    }
+    .video-placeholder {
+      background: #d1d5db;
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      border: 2px dashed #9ca3af;
+      gap: 12px;
+    }
+    .video-placeholder .play-btn {
+      width: 64px;
+      height: 64px;
+      background: rgba(22, 159, 72, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--green);
+    }
+    .video-placeholder .play-btn i {
+      color: var(--green);
+    }
+
+    /* ── Section shared ── */
+    section {
+      padding: 80px 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .section-sub {
+      color: #6b7280;
+      font-size: 1.05rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Features ── */
+    .features { background: #fff; }
+    .feature-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 28px 24px;
+      height: 100%;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 24px rgba(22, 159, 72, 0.12);
+      border-color: var(--green);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--green-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .feature-icon i { color: var(--green); }
+    .feature-card h5 { font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { color: #6b7280; font-size: 0.95rem; margin: 0; }
+
+    /* ── Screenshots ── */
+    .screenshots { background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%); }
+    .screenshot-placeholder {
+      background: #e5e7eb;
+      border-radius: 12px;
+      border: 2px dashed #9ca3af;
+      aspect-ratio: 16/10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      gap: 8px;
+    }
+    .screenshot-placeholder span {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .screenshot-caption {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 12px;
+      color: #374151;
+    }
+
+    /* ── Pricing ── */
+    .pricing { background: #fff; }
+    .pricing-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 36px 28px;
+      height: 100%;
+      position: relative;
+    }
+    .pricing-card.featured {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+      transform: scale(1.04);
+    }
+    .pricing-card.featured .text-muted,
+    .pricing-card.featured .pricing-desc {
+      color: rgba(255,255,255,0.8) !important;
+    }
+    .pricing-card.featured .list-unstyled li {
+      color: #fff;
+    }
+    .badge-popular {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fbbf24;
+      color: #78350f;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .pricing-card h4 {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .pricing-price {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1;
+      margin: 16px 0 4px;
+    }
+    .pricing-price small {
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0.7;
+    }
+    .pricing-desc {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 24px;
+    }
+    .pricing-card .list-unstyled li {
+      padding: 5px 0;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .check-icon { color: var(--green); flex-shrink: 0; }
+    .pricing-card.featured .check-icon { color: #bbf7d0; }
+
+    /* ── How It Works ── */
+    .how-it-works { background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%); }
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 0 auto 20px;
+    }
+    .step-card {
+      text-align: center;
+      padding: 32px 24px;
+    }
+    .step-card h5 { font-weight: 700; margin-bottom: 8px; }
+    .step-card p { color: #6b7280; font-size: 0.95rem; margin: 0; }
+    .step-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 28px;
+      color: #9ca3af;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      padding: 48px 0 32px;
+    }
+    footer .brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+    footer .tagline {
+      font-size: 0.9rem;
+      margin-top: 4px;
+      color: #6b7280;
+    }
+    footer a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    footer a:hover { color: #fff; }
+    footer .footer-links h6 {
+      color: #e5e7eb;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    footer .footer-links li { margin-bottom: 6px; }
+    footer .divider {
+      border-color: #1f2937;
+      margin: 32px 0 24px;
+    }
+    footer .copyright { font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">⚽ Appelada</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#features">Funcionalidades</a></li>
+          <li class="nav-item"><a class="nav-link" href="#screenshots">Capturas de Tela</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Planos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how-it-works">Como Funciona</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+          <a href="#" class="btn btn-outline-green btn-sm">Entrar</a>
+          <a href="#" class="btn btn-primary-green btn-sm">Começar Grátis</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5">
+          <h1>Sua <span>pelada</span>, totalmente organizada</h1>
+          <p class="lead mt-3">O Appelada leva a sua pelada para o digital — gerencie jogadores, agende partidas, registre gols e controle pagamentos em um só lugar.</p>
+          <div class="d-flex gap-3 mt-4 flex-wrap">
+            <a href="#" class="btn btn-primary-green btn-lg px-4">Começar Grátis</a>
+            <a href="#how-it-works" class="btn btn-outline-green btn-lg px-4">Ver Como Funciona</a>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <!-- Replace src with actual demo video URL -->
+          <div class="video-placeholder">
+            <div class="play-btn">
+              <i data-lucide="play" width="28" height="28"></i>
+            </div>
+            <span style="font-weight:600;">Vídeo Demonstrativo</span>
+            <span style="font-size:0.85rem;">Substitua este espaço pelo seu vídeo demonstrativo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container text-center">
+      <h2 class="section-title">Tudo o que sua pelada precisa</h2>
+      <p class="section-sub">Do agendamento às estatísticas, o Appelada cuida da administração para você focar no futebol.</p>
+      <div class="row g-4 text-start">
+
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="users" width="24" height="24"></i></div>
+            <h5>Gerencie Grupos</h5>
+            <p>Crie um grupo para sua pelada, convide jogadores com um código único e controle quem pode entrar. Suporta múltiplos grupos.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="clipboard-list" width="24" height="24"></i></div>
+            <h5>Lista de Jogadores</h5>
+            <p>Mantenha a lista completa de jogadores com status de mensalidade e histórico de presença. Saiba quem vai antes de cada jogo.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="calendar" width="24" height="24"></i></div>
+            <h5>Jogos e Partidas</h5>
+            <p>Agende jogos, registre resultados e mantenha um histórico completo de todas as peladas do seu grupo.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="trophy" width="24" height="24"></i></div>
+            <h5>Gols e Classificação</h5>
+            <p>Registre cada gol marcado, monte o ranking dos artilheiros e exiba a tabela de classificação atualizada automaticamente.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="shuffle" width="24" height="24"></i></div>
+            <h5>Formação de Times</h5>
+            <p>Monte times equilibrados automaticamente e troque jogadores na hora. Times justos em toda partida.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="wallet" width="24" height="24"></i></div>
+            <h5>Financeiro e Cobranças</h5>
+            <p>Gerencie mensalidades, controle despesas e gere relatórios — sem precisar de planilhas.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="screenshots" id="screenshots">
+    <div class="container text-center">
+      <h2 class="section-title">Veja na prática</h2>
+      <p class="section-sub">Interface limpa e adaptada para celular, pensada tanto para organizadores quanto para jogadores.</p>
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <!-- Replace with actual screenshot: src/assets/screenshot-dashboard.png -->
+          <div class="screenshot-placeholder">
+            <i data-lucide="image" width="36" height="36" style="color:#9ca3af;"></i>
+            <span>Espaço para captura de tela</span>
+            <span style="font-size:0.75rem;">1280×800 recomendado</span>
+          </div>
+          <p class="screenshot-caption">Painel</p>
+        </div>
+
+        <div class="col-md-4">
+          <!-- Replace with actual screenshot: src/assets/screenshot-game.png -->
+          <div class="screenshot-placeholder">
+            <i data-lucide="image" width="36" height="36" style="color:#9ca3af;"></i>
+            <span>Espaço para captura de tela</span>
+            <span style="font-size:0.75rem;">1280×800 recomendado</span>
+          </div>
+          <p class="screenshot-caption">Visão do Jogo</p>
+        </div>
+
+        <div class="col-md-4">
+          <!-- Replace with actual screenshot: src/assets/screenshot-stats.png -->
+          <div class="screenshot-placeholder">
+            <i data-lucide="image" width="36" height="36" style="color:#9ca3af;"></i>
+            <span>Espaço para captura de tela</span>
+            <span style="font-size:0.75rem;">1280×800 recomendado</span>
+          </div>
+          <p class="screenshot-caption">Estatísticas dos Jogadores</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container text-center">
+      <h2 class="section-title">Planos simples e transparentes</h2>
+      <p class="section-sub">Comece grátis e evolua conforme seu grupo cresce. Sem taxas escondidas.</p>
+      <div class="row g-4 justify-content-center align-items-stretch mt-2">
+
+        <!-- Free -->
+        <div class="col-md-4 col-lg-3">
+          <div class="pricing-card">
+            <h4>Free</h4>
+            <div class="pricing-price">R$0 <small>/mês</small></div>
+            <p class="pricing-desc">Ideal para grupos pequenos que estão começando.</p>
+            <ul class="list-unstyled text-start mb-4">
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> 1 grupo</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Até 20 jogadores</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Agendamento de jogos</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Registro manual de estatísticas</li>
+            </ul>
+            <a href="#" class="btn btn-outline-green w-100">Começar</a>
+          </div>
+        </div>
+
+        <!-- Pro (featured) -->
+        <div class="col-md-4 col-lg-3">
+          <div class="pricing-card featured">
+            <div class="badge-popular">Mais Popular</div>
+            <h4>Pro</h4>
+            <div class="pricing-price">R$9 <small>/mês</small></div>
+            <p class="pricing-desc">Para grupos ativos que jogam com frequência.</p>
+            <ul class="list-unstyled text-start mb-4">
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> 1 grupo</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Jogadores ilimitados</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Gols e classificação</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Relatórios financeiros</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Formação automática de times</li>
+            </ul>
+            <a href="#" class="btn btn-light w-100 fw-semibold">Começar</a>
+          </div>
+        </div>
+
+        <!-- Club -->
+        <div class="col-md-4 col-lg-3">
+          <div class="pricing-card">
+            <h4>Club</h4>
+            <div class="pricing-price">R$29 <small>/mês</small></div>
+            <p class="pricing-desc">Para clubes grandes e ligas organizadas.</p>
+            <ul class="list-unstyled text-start mb-4">
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Grupos ilimitados</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Tudo do plano Pro</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Suporte prioritário</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Marca personalizada</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Acesso à API</li>
+            </ul>
+            <a href="#" class="btn btn-primary-green w-100">Começar</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container text-center">
+      <h2 class="section-title">Pronto pra jogar em minutos</h2>
+      <p class="section-sub">Três passos e sua pelada está no ar.</p>
+      <div class="row justify-content-center">
+
+        <div class="col-md-3">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h5>Crie um Grupo</h5>
+            <p>Cadastre-se e crie seu grupo. Compartilhe o código único com seus jogadores para eles entrarem na hora.</p>
+          </div>
+        </div>
+
+        <div class="col-md-1 d-none d-md-flex">
+          <div class="step-connector">
+            <i data-lucide="arrow-right" width="28" height="28"></i>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h5>Adicione Jogadores</h5>
+            <p>Monte sua lista, defina o valor da mensalidade e acompanhe quem confirmou presença.</p>
+          </div>
+        </div>
+
+        <div class="col-md-1 d-none d-md-flex">
+          <div class="step-connector">
+            <i data-lucide="arrow-right" width="28" height="28"></i>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h5>Bora Jogar!</h5>
+            <p>Monte os times, registre os gols e veja a classificação atualizar em tempo real. Bola na rede!</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-5">
+        <a href="#" class="btn btn-primary-green btn-lg px-5">Criar Meu Grupo Agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="brand">⚽ Appelada</div>
+          <p class="tagline mt-1">Sua pelada, organizada.</p>
+          <p class="mt-3" style="font-size:0.9rem;">A ferramenta completa para gerenciar sua pelada — do primeiro chute à classificação final.</p>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-2 footer-links">
+          <h6>Produto</h6>
+          <ul class="list-unstyled">
+            <li><a href="#features">Funcionalidades</a></li>
+            <li><a href="#pricing">Planos</a></li>
+            <li><a href="#screenshots">Capturas de Tela</a></li>
+            <li><a href="#">Novidades</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 footer-links">
+          <h6>Empresa</h6>
+          <ul class="list-unstyled">
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 footer-links">
+          <h6>Legal</h6>
+          <ul class="list-unstyled">
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="divider" />
+      <p class="copyright text-center mb-0">&copy; 2026 Appelada. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
