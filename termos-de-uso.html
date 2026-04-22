@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termos de Uso — Appelada</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.441.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --green: #169f48;
+      --green-dark: #15803d;
+      --green-light: #f0fdf4;
+      --green-pale: #d1fae5;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #1a1a1a;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--green) !important;
+    }
+    .btn-primary-green {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+      font-weight: 600;
+    }
+    .btn-primary-green:hover {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: #fff;
+    }
+    .btn-outline-green {
+      border-color: var(--green);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .btn-outline-green:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+    /* ── Legal content ── */
+    .legal-hero {
+      background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%);
+      padding: 60px 0 48px;
+    }
+    .legal-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+    }
+    .legal-hero .update-date {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 8px;
+    }
+    .legal-body {
+      padding: 56px 0 72px;
+    }
+    .legal-body h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      color: #111827;
+    }
+    .legal-body h2:first-child {
+      margin-top: 0;
+    }
+    .legal-body p, .legal-body li {
+      color: #374151;
+      line-height: 1.75;
+      font-size: 0.97rem;
+    }
+    .legal-body ul {
+      padding-left: 1.4rem;
+    }
+    .legal-body ul li {
+      margin-bottom: 4px;
+    }
+    .legal-body a {
+      color: var(--green);
+      text-decoration: none;
+    }
+    .legal-body a:hover {
+      text-decoration: underline;
+    }
+    .legal-divider {
+      border-color: #e5e7eb;
+      margin: 1.6rem 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      padding: 48px 0 32px;
+    }
+    footer .brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+    footer .tagline {
+      font-size: 0.9rem;
+      margin-top: 4px;
+      color: #6b7280;
+    }
+    footer a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    footer a:hover { color: #fff; }
+    footer .footer-links h6 {
+      color: #e5e7eb;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    footer .footer-links li { margin-bottom: 6px; }
+    footer .divider {
+      border-color: #1f2937;
+      margin: 32px 0 24px;
+    }
+    footer .copyright { font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">⚽ Appelada</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/#features">Funcionalidades</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#screenshots">Capturas de Tela</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#pricing">Planos</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#how-it-works">Como Funciona</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+          <a href="#" class="btn btn-outline-green btn-sm">Entrar</a>
+          <a href="#" class="btn btn-primary-green btn-sm">Começar Grátis</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="legal-hero">
+    <div class="container">
+      <h1>Termos de Uso</h1>
+      <p class="update-date">Última atualização: 22 de abril de 2026</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="legal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+
+          <p>Bem-vindo ao Appelada. Ao acessar ou utilizar nossa Plataforma, você ("Usuário") concorda com os presentes Termos de Uso ("Termos"). Leia-os com atenção antes de usar o serviço. Caso não concorde com alguma disposição, não utilize a Plataforma.</p>
+
+          <hr class="legal-divider" />
+
+          <h2>1. Aceitação dos Termos</h2>
+          <p>Ao criar uma conta, acessar a Plataforma ou utilizar qualquer funcionalidade do Appelada, você declara que leu, compreendeu e concorda em ficar vinculado a estes Termos e à nossa <a href="./politica-de-privacidade.html">Política de Privacidade</a>, que é parte integrante deste instrumento.</p>
+          <p>Reservamo-nos o direito de alterar estes Termos a qualquer momento, publicando a versão atualizada na Plataforma com aviso prévio de pelo menos 15 (quinze) dias para alterações substanciais. O uso continuado após a vigência das alterações implica aceitação.</p>
+
+          <h2>2. Descrição do Serviço</h2>
+          <p>O Appelada é uma plataforma de gestão de grupos de futebol amador ("pelada") que oferece, entre outras, as seguintes funcionalidades:</p>
+          <ul>
+            <li>Criação e gerenciamento de grupos de jogadores.</li>
+            <li>Agendamento de jogos e registro de partidas.</li>
+            <li>Registro de gols, estatísticas e classificação.</li>
+            <li>Formação automática de times.</li>
+            <li>Controle financeiro e gestão de mensalidades.</li>
+          </ul>
+          <p>As funcionalidades disponíveis variam conforme o plano contratado (Free, Pro ou Club), conforme descrito na Seção 4.</p>
+
+          <h2>3. Elegibilidade e Conta de Usuário</h2>
+          <p>Para utilizar o Appelada, você deve:</p>
+          <ul>
+            <li>Ter pelo menos 18 (dezoito) anos de idade, ou ter autorização de responsável legal caso seja menor de idade.</li>
+            <li>Fornecer informações verdadeiras, completas e atualizadas no cadastro.</li>
+            <li>Manter a confidencialidade de suas credenciais de acesso.</li>
+          </ul>
+          <p>Você é responsável por todas as atividades realizadas em sua conta. Notifique-nos imediatamente em caso de uso não autorizado pelo e-mail <a href="mailto:suporte@appelada.com.br">suporte@appelada.com.br</a>.</p>
+          <p>É permitida apenas uma conta por pessoa. Contas duplicadas poderão ser encerradas sem aviso prévio.</p>
+
+          <h2>4. Planos e Pagamentos</h2>
+          <p>O Appelada oferece os seguintes planos:</p>
+          <ul>
+            <li><strong>Free:</strong> gratuito, limitado a 1 grupo com até 20 jogadores e funcionalidades básicas.</li>
+            <li><strong>Pro (R$9/mês):</strong> 1 grupo com jogadores ilimitados, estatísticas completas, relatórios financeiros e formação automática de times.</li>
+            <li><strong>Club (R$29/mês):</strong> grupos ilimitados, todas as funcionalidades do Pro, suporte prioritário, marca personalizada e acesso à API.</li>
+          </ul>
+          <p>Os pagamentos são processados por nosso parceiro de pagamentos e cobrados no início de cada período de faturamento. Os preços podem ser atualizados com aviso prévio de 30 (trinta) dias.</p>
+          <p><strong>Cancelamento:</strong> você pode cancelar seu plano a qualquer momento. O acesso às funcionalidades pagas permanece ativo até o fim do período já pago, sem direito a reembolso proporcional, salvo disposição legal em contrário.</p>
+          <p><strong>Inadimplência:</strong> o não pagamento na data de vencimento poderá resultar na suspensão ou downgrade da conta para o plano Free.</p>
+
+          <h2>5. Uso Aceitável</h2>
+          <p>Ao utilizar a Plataforma, você concorda em não:</p>
+          <ul>
+            <li>Violar leis ou regulamentos aplicáveis, incluindo a LGPD.</li>
+            <li>Utilizar a Plataforma para fins ilegais, fraudulentos ou prejudiciais a terceiros.</li>
+            <li>Publicar conteúdo ofensivo, discriminatório, difamatório ou que viole direitos de terceiros.</li>
+            <li>Tentar acessar sistemas, dados ou contas de outros usuários sem autorização.</li>
+            <li>Realizar engenharia reversa, descompilar ou desmontar qualquer parte da Plataforma.</li>
+            <li>Introduzir vírus, malware ou qualquer código malicioso.</li>
+            <li>Sobrecarregar ou interferir no funcionamento da Plataforma (ataques de negação de serviço ou similares).</li>
+            <li>Revender ou sublicenciar o acesso à Plataforma sem autorização expressa.</li>
+          </ul>
+          <p>O descumprimento destas regras pode resultar na suspensão ou encerramento imediato da conta, sem prejuízo de medidas legais cabíveis.</p>
+
+          <h2>6. Conteúdo do Usuário</h2>
+          <p>Você mantém a titularidade de todo o conteúdo que inserir na Plataforma (dados de jogadores, estatísticas, etc.). Ao inserir conteúdo, você nos concede uma licença limitada, não exclusiva e revogável para armazenar, processar e exibir esse conteúdo estritamente para a prestação do serviço.</p>
+          <p>Você declara que possui os direitos necessários sobre o conteúdo inserido e que ele não viola direitos de terceiros. O Appelada não se responsabiliza pelo conteúdo gerado pelos usuários.</p>
+
+          <h2>7. Propriedade Intelectual</h2>
+          <p>Todos os direitos sobre a Plataforma — incluindo, sem limitação, código-fonte, design, marca, logotipos, textos e funcionalidades — são de propriedade exclusiva do Appelada ou de seus licenciadores. Estes Termos não transferem qualquer direito de propriedade intelectual ao Usuário.</p>
+          <p>É vedada a reprodução, distribuição ou criação de obras derivadas sem autorização prévia e por escrito.</p>
+
+          <h2>8. Disponibilidade do Serviço e Isenção de Responsabilidade</h2>
+          <p>Envidamos melhores esforços para manter a Plataforma disponível continuamente, mas não garantimos disponibilidade ininterrupta. Podemos suspender o serviço para manutenção, atualizações ou em casos de força maior.</p>
+          <p><strong>O Appelada é fornecido "como está" e "conforme disponível".</strong> Na máxima extensão permitida pela lei, isentamo-nos de garantias implícitas de comercialização, adequação a uma finalidade específica ou não violação.</p>
+          <p>Em nenhuma hipótese seremos responsáveis por danos indiretos, incidentais, especiais, consequenciais ou punitivos decorrentes do uso ou incapacidade de usar a Plataforma, mesmo se avisados da possibilidade de tais danos. Nossa responsabilidade total não excederá o valor pago por você nos 3 (três) meses anteriores ao evento que originou o dano.</p>
+
+          <h2>9. Rescisão</h2>
+          <p>Você pode encerrar sua conta a qualquer momento pelas configurações da Plataforma ou por solicitação ao <a href="mailto:suporte@appelada.com.br">suporte@appelada.com.br</a>.</p>
+          <p>Reservamo-nos o direito de suspender ou encerrar sua conta, com ou sem aviso prévio, em caso de violação destes Termos, conduta prejudicial a outros usuários ou à Plataforma, ou determinação legal.</p>
+          <p>Após o encerramento, seus dados serão tratados conforme a <a href="./politica-de-privacidade.html">Política de Privacidade</a>.</p>
+
+          <h2>10. Lei Aplicável e Foro</h2>
+          <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Qualquer controvérsia decorrente destes Termos será submetida ao foro da Comarca de São Paulo, Estado de São Paulo, com exclusão de qualquer outro, por mais privilegiado que seja.</p>
+
+          <h2>11. Disposições Gerais</h2>
+          <ul>
+            <li>Se qualquer disposição destes Termos for considerada inválida ou inexequível, as demais permanecerão em pleno vigor.</li>
+            <li>A omissão ou tolerância de qualquer parte em exigir o cumprimento destes Termos não implica renúncia ao direito de fazê-lo posteriormente.</li>
+            <li>Estes Termos constituem o acordo integral entre você e o Appelada com relação ao uso da Plataforma.</li>
+          </ul>
+
+          <h2>12. Contato</h2>
+          <p>Em caso de dúvidas, sugestões ou reclamações, entre em contato:</p>
+          <ul>
+            <li><strong>Suporte geral:</strong> <a href="mailto:suporte@appelada.com.br">suporte@appelada.com.br</a></li>
+            <li><strong>Privacidade e dados:</strong> <a href="mailto:privacidade@appelada.com.br">privacidade@appelada.com.br</a></li>
+            <li><strong>Termos vigentes desde:</strong> 22 de abril de 2026</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="brand">⚽ Appelada</div>
+          <p class="tagline mt-1">Sua pelada, organizada.</p>
+          <p class="mt-3" style="font-size:0.9rem;">A ferramenta completa para gerenciar sua pelada — do primeiro chute à classificação final.</p>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-2 footer-links">
+          <h6>Produto</h6>
+          <ul class="list-unstyled">
+            <li><a href="/#features">Funcionalidades</a></li>
+            <li><a href="/#pricing">Planos</a></li>
+            <li><a href="/#screenshots">Capturas de Tela</a></li>
+            <li><a href="#">Novidades</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 footer-links">
+          <h6>Empresa</h6>
+          <ul class="list-unstyled">
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2 footer-links">
+          <h6>Legal</h6>
+          <ul class="list-unstyled">
+            <li><a href="./politica-de-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="./termos-de-uso.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="divider" />
+      <p class="copyright text-center mb-0">&copy; 2026 Appelada. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
