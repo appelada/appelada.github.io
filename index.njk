@@ -1,330 +1,217 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Appelada — Sua Pelada Organizada</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3FQTL6433S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+{% extends "_includes/layouts/base.njk" %}
 
-    gtag('config', 'G-3FQTL6433S');
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.441.0/dist/umd/lucide.min.js"></script>
-  <style>
-    :root {
-      --green: #169f48;
-      --green-dark: #15803d;
-      --green-light: #f0fdf4;
-      --green-pale: #d1fae5;
-    }
+{% block title %}Appelada — Sua Pelada Organizada{% endblock %}
 
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      color: #1a1a1a;
-    }
+{% block pageStyles %}
+<style>
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%);
+    padding: 100px 0 80px;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+  }
+  .hero h1 span {
+    color: var(--green);
+  }
+  .hero .lead {
+    font-size: 1.2rem;
+    color: #4b5563;
+    max-width: 520px;
+  }
+  .video-placeholder {
+    background: #d1d5db;
+    border-radius: 16px;
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    border: 2px dashed #9ca3af;
+    gap: 12px;
+  }
+  .video-placeholder .play-btn {
+    width: 64px;
+    height: 64px;
+    background: rgba(22, 159, 72, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--green);
+  }
+  .video-placeholder .play-btn i {
+    color: var(--green);
+  }
 
-    /* ── Navbar ── */
-    .navbar {
-      background: #fff;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: var(--green) !important;
-    }
-    .btn-primary-green {
-      background: var(--green);
-      border-color: var(--green);
-      color: #fff;
-      font-weight: 600;
-    }
-    .btn-primary-green:hover {
-      background: var(--green-dark);
-      border-color: var(--green-dark);
-      color: #fff;
-    }
-    .btn-outline-green {
-      border-color: var(--green);
-      color: var(--green);
-      font-weight: 600;
-    }
-    .btn-outline-green:hover {
-      background: var(--green);
-      color: #fff;
-    }
+  /* ── Section shared ── */
+  section {
+    padding: 80px 0;
+  }
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .section-sub {
+    color: #6b7280;
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
+  }
 
-    /* ── Hero ── */
-    .hero {
-      background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%);
-      padding: 100px 0 80px;
-    }
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      line-height: 1.15;
-    }
-    .hero h1 span {
-      color: var(--green);
-    }
-    .hero .lead {
-      font-size: 1.2rem;
-      color: #4b5563;
-      max-width: 520px;
-    }
-    .video-placeholder {
-      background: #d1d5db;
-      border-radius: 16px;
-      aspect-ratio: 16/9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #6b7280;
-      border: 2px dashed #9ca3af;
-      gap: 12px;
-    }
-    .video-placeholder .play-btn {
-      width: 64px;
-      height: 64px;
-      background: rgba(22, 159, 72, 0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--green);
-    }
-    .video-placeholder .play-btn i {
-      color: var(--green);
-    }
+  /* ── Features ── */
+  .features { background: #fff; }
+  .feature-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 28px 24px;
+    height: 100%;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .feature-card:hover {
+    box-shadow: 0 8px 24px rgba(22, 159, 72, 0.12);
+    border-color: var(--green);
+  }
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--green-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .feature-icon i { color: var(--green); }
+  .feature-card h5 { font-weight: 700; margin-bottom: 8px; }
+  .feature-card p { color: #6b7280; font-size: 0.95rem; margin: 0; }
 
-    /* ── Section shared ── */
-    section {
-      padding: 80px 0;
-    }
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .section-sub {
-      color: #6b7280;
-      font-size: 1.05rem;
-      margin-bottom: 3rem;
-    }
+  /* ── Screenshots ── */
+  .screenshots { background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%); }
+  .screenshot-placeholder {
+    background: #e5e7eb;
+    border-radius: 12px;
+    border: 2px dashed #9ca3af;
+    aspect-ratio: 16/10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    gap: 8px;
+  }
+  .screenshot-placeholder span {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .screenshot-caption {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 12px;
+    color: #374151;
+  }
 
-    /* ── Features ── */
-    .features { background: #fff; }
-    .feature-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 28px 24px;
-      height: 100%;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .feature-card:hover {
-      box-shadow: 0 8px 24px rgba(22, 159, 72, 0.12);
-      border-color: var(--green);
-    }
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--green-light);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .feature-icon i { color: var(--green); }
-    .feature-card h5 { font-weight: 700; margin-bottom: 8px; }
-    .feature-card p { color: #6b7280; font-size: 0.95rem; margin: 0; }
+  /* ── Pricing ── */
+  .pricing { background: #fff; }
+  .pricing-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 36px 28px;
+    height: 100%;
+    position: relative;
+  }
+  .pricing-card.featured {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+    transform: scale(1.04);
+  }
+  .pricing-card.featured .text-muted,
+  .pricing-card.featured .pricing-desc {
+    color: rgba(255,255,255,0.8) !important;
+  }
+  .pricing-card.featured .list-unstyled li {
+    color: #fff;
+  }
+  .badge-popular {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fbbf24;
+    color: #78350f;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .pricing-card h4 {
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .pricing-price {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1;
+    margin: 16px 0 4px;
+  }
+  .pricing-price small {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+  .pricing-desc {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 24px;
+  }
+  .pricing-card .list-unstyled li {
+    padding: 5px 0;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .check-icon { color: var(--green); flex-shrink: 0; }
+  .pricing-card.featured .check-icon { color: #bbf7d0; }
 
-    /* ── Screenshots ── */
-    .screenshots { background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%); }
-    .screenshot-placeholder {
-      background: #e5e7eb;
-      border-radius: 12px;
-      border: 2px dashed #9ca3af;
-      aspect-ratio: 16/10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #6b7280;
-      gap: 8px;
-    }
-    .screenshot-placeholder span {
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-    .screenshot-caption {
-      text-align: center;
-      font-weight: 600;
-      margin-top: 12px;
-      color: #374151;
-    }
+  /* ── How It Works ── */
+  .how-it-works { background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%); }
+  .step-number {
+    width: 56px;
+    height: 56px;
+    background: var(--green);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 auto 20px;
+  }
+  .step-card {
+    text-align: center;
+    padding: 32px 24px;
+  }
+  .step-card h5 { font-weight: 700; margin-bottom: 8px; }
+  .step-card p { color: #6b7280; font-size: 0.95rem; margin: 0; }
+  .step-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 28px;
+    color: #9ca3af;
+  }
+</style>
+{% endblock %}
 
-    /* ── Pricing ── */
-    .pricing { background: #fff; }
-    .pricing-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 36px 28px;
-      height: 100%;
-      position: relative;
-    }
-    .pricing-card.featured {
-      background: var(--green);
-      border-color: var(--green);
-      color: #fff;
-      transform: scale(1.04);
-    }
-    .pricing-card.featured .text-muted,
-    .pricing-card.featured .pricing-desc {
-      color: rgba(255,255,255,0.8) !important;
-    }
-    .pricing-card.featured .list-unstyled li {
-      color: #fff;
-    }
-    .badge-popular {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #fbbf24;
-      color: #78350f;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 4px 14px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-    .pricing-card h4 {
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .pricing-price {
-      font-size: 2.4rem;
-      font-weight: 800;
-      line-height: 1;
-      margin: 16px 0 4px;
-    }
-    .pricing-price small {
-      font-size: 1rem;
-      font-weight: 500;
-      opacity: 0.7;
-    }
-    .pricing-desc {
-      font-size: 0.9rem;
-      color: #6b7280;
-      margin-bottom: 24px;
-    }
-    .pricing-card .list-unstyled li {
-      padding: 5px 0;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .check-icon { color: var(--green); flex-shrink: 0; }
-    .pricing-card.featured .check-icon { color: #bbf7d0; }
-
-    /* ── How It Works ── */
-    .how-it-works { background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%); }
-    .step-number {
-      width: 56px;
-      height: 56px;
-      background: var(--green);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin: 0 auto 20px;
-    }
-    .step-card {
-      text-align: center;
-      padding: 32px 24px;
-    }
-    .step-card h5 { font-weight: 700; margin-bottom: 8px; }
-    .step-card p { color: #6b7280; font-size: 0.95rem; margin: 0; }
-    .step-connector {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 28px;
-      color: #9ca3af;
-    }
-
-    /* ── Footer ── */
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      padding: 48px 0 32px;
-    }
-    footer .brand {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--green);
-    }
-    footer .tagline {
-      font-size: 0.9rem;
-      margin-top: 4px;
-      color: #6b7280;
-    }
-    footer a {
-      color: #9ca3af;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-    footer a:hover { color: #fff; }
-    footer .footer-links h6 {
-      color: #e5e7eb;
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
-    }
-    footer .footer-links li { margin-bottom: 6px; }
-    footer .divider {
-      border-color: #1f2937;
-      margin: 32px 0 24px;
-    }
-    footer .copyright { font-size: 0.85rem; }
-  </style>
-</head>
-<body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">⚽ Appelada</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#features">Funcionalidades</a></li>
-          <li class="nav-item"><a class="nav-link" href="#screenshots">Capturas de Tela</a></li>
-          <li class="nav-item"><a class="nav-link" href="#pricing">Planos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#how-it-works">Como Funciona</a></li>
-        </ul>
-        <div class="d-flex gap-2">
-          <a href="#" class="btn btn-outline-green btn-sm">Entrar</a>
-          <a href="#" class="btn btn-primary-green btn-sm">Começar Grátis</a>
-        </div>
-      </div>
-    </div>
-  </nav>
+{% block content %}
 
   <!-- Hero -->
   <section class="hero">
@@ -565,46 +452,4 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <div class="brand">⚽ Appelada</div>
-          <p class="tagline mt-1">Sua pelada, organizada.</p>
-          <p class="mt-3" style="font-size:0.9rem;">A ferramenta completa para gerenciar sua pelada — do primeiro chute à classificação final.</p>
-        </div>
-        <div class="col-6 col-lg-2 offset-lg-2 footer-links">
-          <h6>Produto</h6>
-          <ul class="list-unstyled">
-            <li><a href="#features">Funcionalidades</a></li>
-            <li><a href="#pricing">Planos</a></li>
-            <li><a href="#screenshots">Capturas de Tela</a></li>
-            <li><a href="#">Novidades</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-lg-2 footer-links">
-          <h6>Empresa</h6>
-          <ul class="list-unstyled">
-            <li><a href="#">Sobre</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contato</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-lg-2 footer-links">
-          <h6>Legal</h6>
-          <ul class="list-unstyled">
-            <li><a href="./politica-de-privacidade.html">Política de Privacidade</a></li>
-            <li><a href="./termos-de-uso.html">Termos de Uso</a></li>
-          </ul>
-        </div>
-      </div>
-      <hr class="divider" />
-      <p class="copyright text-center mb-0">&copy; 2026 Appelada. Todos os direitos reservados.</p>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>lucide.createIcons();</script>
-</body>
-</html>
+{% endblock %}
