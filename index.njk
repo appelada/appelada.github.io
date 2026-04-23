@@ -1,6 +1,6 @@
 {% extends "_includes/layouts/base.njk" %}
 
-{% block title %}Appelada — Sua Pelada Organizada{% endblock %}
+{% block title %}Appelada - Sua Pelada Organizada{% endblock %}
 
 {% block pageStyles %}
 <style>
@@ -22,30 +22,14 @@
     color: #4b5563;
     max-width: 520px;
   }
-  .video-placeholder {
-    background: #d1d5db;
-    border-radius: 16px;
+  .video {
     aspect-ratio: 16/9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #6b7280;
-    border: 2px dashed #9ca3af;
-    gap: 12px;
   }
-  .video-placeholder .play-btn {
-    width: 64px;
-    height: 64px;
-    background: rgba(22, 159, 72, 0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--green);
-  }
-  .video-placeholder .play-btn i {
-    color: var(--green);
+  .video iframe {
+    border-radius: 16px;
+    border: 2px solid #9ca3af;
+    width: 100%;
+    height: 100%;
   }
 
   /* ── Section shared ── */
@@ -92,21 +76,12 @@
 
   /* ── Screenshots ── */
   .screenshots { background: linear-gradient(135deg, var(--green-light) 0%, var(--green-pale) 100%); }
-  .screenshot-placeholder {
+  .screenshot {
     background: #e5e7eb;
     border-radius: 12px;
-    border: 2px dashed #9ca3af;
-    aspect-ratio: 16/10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    border: 2px solid #9ca3af;
     color: #6b7280;
     gap: 8px;
-  }
-  .screenshot-placeholder span {
-    font-size: 0.85rem;
-    font-weight: 500;
   }
   .screenshot-caption {
     text-align: center;
@@ -219,20 +194,15 @@
       <div class="row align-items-center g-5">
         <div class="col-lg-5">
           <h1>Sua <span>pelada</span>, totalmente organizada</h1>
-          <p class="lead mt-3">O Appelada leva a sua pelada para o digital — gerencie jogadores, agende partidas, registre gols e controle pagamentos em um só lugar.</p>
+          <p class="lead mt-3">O Appelada leva a sua pelada para o digital - gerencie jogadores, agende partidas, registre gols e controle pagamentos em um só lugar.</p>
           <div class="d-flex gap-3 mt-4 flex-wrap">
             <a href="#" class="btn btn-primary-green btn-lg px-4">Começar Grátis</a>
             <a href="#how-it-works" class="btn btn-outline-green btn-lg px-4">Ver Como Funciona</a>
           </div>
         </div>
         <div class="col-lg-7">
-          <!-- Replace src with actual demo video URL -->
-          <div class="video-placeholder">
-            <div class="play-btn">
-              <i data-lucide="play" width="28" height="28"></i>
-            </div>
-            <span style="font-weight:600;">Vídeo Demonstrativo</span>
-            <span style="font-size:0.85rem;">Substitua este espaço pelo seu vídeo demonstrativo</span>
+          <div class="video">
+            <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/dDKC17ki24M" frameborder="0"></iframe>
           </div>
         </div>
       </div>
@@ -290,7 +260,7 @@
           <div class="feature-card">
             <div class="feature-icon"><i data-lucide="wallet" width="24" height="24"></i></div>
             <h5>Financeiro e Cobranças</h5>
-            <p>Gerencie mensalidades, controle despesas e gere relatórios — sem precisar de planilhas.</p>
+            <p>Gerencie mensalidades, controle despesas e gere relatórios - sem precisar de planilhas.</p>
           </div>
         </div>
 
@@ -305,34 +275,29 @@
       <p class="section-sub">Interface limpa e adaptada para celular, pensada tanto para organizadores quanto para jogadores.</p>
       <div class="row g-4">
 
-        <div class="col-md-4">
-          <!-- Replace with actual screenshot: src/assets/screenshot-dashboard.png -->
-          <div class="screenshot-placeholder">
-            <i data-lucide="image" width="36" height="36" style="color:#9ca3af;"></i>
-            <span>Espaço para captura de tela</span>
-            <span style="font-size:0.75rem;">1280×800 recomendado</span>
-          </div>
-          <p class="screenshot-caption">Painel</p>
+        <div class="col">
+          <img src="/images/screenshot-games-list.png" class="screenshot img-fluid" />
+          <p class="screenshot-caption">Histórico de peladas</p>
         </div>
 
-        <div class="col-md-4">
-          <!-- Replace with actual screenshot: src/assets/screenshot-game.png -->
-          <div class="screenshot-placeholder">
-            <i data-lucide="image" width="36" height="36" style="color:#9ca3af;"></i>
-            <span>Espaço para captura de tela</span>
-            <span style="font-size:0.75rem;">1280×800 recomendado</span>
-          </div>
-          <p class="screenshot-caption">Visão do Jogo</p>
+        <div class="col">
+          <img src="/images/screenshot-game-view.png" class="screenshot img-fluid" />
+          <p class="screenshot-caption">Informações da pelada</p>
         </div>
 
-        <div class="col-md-4">
-          <!-- Replace with actual screenshot: src/assets/screenshot-stats.png -->
-          <div class="screenshot-placeholder">
-            <i data-lucide="image" width="36" height="36" style="color:#9ca3af;"></i>
-            <span>Espaço para captura de tela</span>
-            <span style="font-size:0.75rem;">1280×800 recomendado</span>
-          </div>
-          <p class="screenshot-caption">Estatísticas dos Jogadores</p>
+        <div class="col">
+          <img src="/images/screenshot-match-view.png" class="screenshot img-fluid" />
+          <p class="screenshot-caption">Partida em andamento</p>
+        </div>
+
+        <div class="col">
+          <img src="/images/screenshot-messages-builder.png" class="screenshot img-fluid" />
+          <p class="screenshot-caption">Gerador de mensagens</p>
+        </div>
+
+        <div class="col">
+          <img src="/images/screenshot-finance.png" class="screenshot img-fluid" />
+          <p class="screenshot-caption">Financeiro</p>
         </div>
 
       </div>
@@ -355,10 +320,12 @@
             <ul class="list-unstyled text-start mb-4">
               <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> 1 grupo</li>
               <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Até 20 jogadores</li>
-              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Agendamento de jogos</li>
-              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Registro manual de estatísticas</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Até 4 peladas por mês</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Gols e classificação</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Relatórios financeiros</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Formação automática de times</li>
             </ul>
-            <a href="#" class="btn btn-outline-green w-100">Começar</a>
+            <a href="https://app.appelada.net/#/register" class="btn btn-outline-green w-100">Começar</a>
           </div>
         </div>
 
@@ -367,16 +334,17 @@
           <div class="pricing-card featured">
             <div class="badge-popular">Mais Popular</div>
             <h4>Pro</h4>
-            <div class="pricing-price">R$9 <small>/mês</small></div>
+            <div class="pricing-price">R$9,90 <small>/mês</small></div>
             <p class="pricing-desc">Para grupos ativos que jogam com frequência.</p>
             <ul class="list-unstyled text-start mb-4">
               <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> 1 grupo</li>
-              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Jogadores ilimitados</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Até 20 jogadores por grupo</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Peladas ilimitadas</li>
               <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Gols e classificação</li>
               <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Relatórios financeiros</li>
               <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Formação automática de times</li>
             </ul>
-            <a href="#" class="btn btn-light w-100 fw-semibold">Começar</a>
+            <a href="https://app.appelada.net/#/register" class="btn btn-light w-100 fw-semibold">Começar</a>
           </div>
         </div>
 
@@ -384,16 +352,17 @@
         <div class="col-md-4 col-lg-3">
           <div class="pricing-card">
             <h4>Club</h4>
-            <div class="pricing-price">R$29 <small>/mês</small></div>
+            <div class="pricing-price">R$29,90 <small>/mês</small></div>
             <p class="pricing-desc">Para clubes grandes e ligas organizadas.</p>
             <ul class="list-unstyled text-start mb-4">
               <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Grupos ilimitados</li>
-              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Tudo do plano Pro</li>
-              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Suporte prioritário</li>
-              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Marca personalizada</li>
-              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Acesso à API</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Jogadores ilimitados</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Peladas ilimitadas</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Gols e classificação</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Relatórios financeiros</li>
+              <li><i class="check-icon" data-lucide="check" width="16" height="16"></i> Formação automática de times</li>
             </ul>
-            <a href="#" class="btn btn-primary-green w-100">Começar</a>
+            <a href="https://app.appelada.net/#/register" class="btn btn-primary-green w-100">Começar</a>
           </div>
         </div>
 
@@ -447,7 +416,7 @@
       </div>
 
       <div class="mt-5">
-        <a href="#" class="btn btn-primary-green btn-lg px-5">Criar Meu Grupo Agora</a>
+        <a href="https://app.appelada.net/#/groups/new" class="btn btn-primary-green btn-lg px-5">Criar Meu Grupo Agora</a>
       </div>
     </div>
   </section>
